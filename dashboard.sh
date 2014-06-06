@@ -15,9 +15,14 @@ fi
 number_users=$(cat /etc/passwd | wc | tr -s " " | cut -d' ' -f2)
 number_active_users=$(who | wc | tr -s ' ' | cut -d' ' -f2)
 most_used_shell=$(cat /etc/passwd | cut -d: -f7 | uniq -c | sort -n | tail -n1 | tr -s ' ' | cut -d' ' -f3)
+number_processes=$(ps aux | wc | tr -s " " | cut -d' ' -f2)
+majority_processes_count=$(ps aux | tr -s ' ' | cut -d' ' -f1 | sort | uniq -c | sort -n | tail -n 1 | tr -s ' ' | cut -d' ' -f2)
+majority_process_owner=$(ps aux | tr -s ' ' | cut -d' ' -f1 | sort | uniq -c | sort -n | tail -n 1 | tr -s ' ' | cut -d' ' -f3)
 
 echo "CPU AND MEMORY RESOURCES ------------------"
 echo "CPU LOAD AVERAGE: $cpu_load_avg	Free RAM: $free_ram"
+echo "Total processes: $number_processes"
+echo "Majority process owner: $majority_process_owner with $majority_process_count processes"
 echo "NETWORK CONNECTIONS -----------------------"
 echo "Io Bytes Received: $io_bytes_rec	Bytes Transmitted: $io_bytes_sent"
 echo "eth0 Bytes Received: $eth0_bytes_rec	Bytes Transmitted: $eth0_bytes_sent"
