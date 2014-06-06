@@ -13,14 +13,14 @@ else
 	internet_connected="no"
 fi
 number_users=$(cat /etc/passwd | wc | tr -s " " | cut -d' ' -f2)
-number_active_users=$(who | sc | tr -s ' ' | cut -d' ' -f2)
+number_active_users=$(who | wc | tr -s ' ' | cut -d' ' -f2)
 most_used_shell=$(cat /etc/passwd | cut -d: -f7 | uniq -c | sort -n | tail -n1 | tr -s ' ' | cut -d' ' -f3)
 
 echo "CPU AND MEMORY RESOURCES ------------------"
 echo "CPU LOAD AVERAGE: $cpu_load_avg	Free RAM: $free_ram"
 echo "NETWORK CONNECTIONS -----------------------"
 echo "Io Bytes Received: $io_bytes_rec	Bytes Transmitted: $io_bytes_sent"
-echo "eth0 Bytes Received: $eth0_bytes_rec	Bytes Transmitted: eth0_bytes_sent"
+echo "eth0 Bytes Received: $eth0_bytes_rec	Bytes Transmitted: $eth0_bytes_sent"
 echo "Internet Connectivity: $internet_connected"
 echo "ACCOUNT INFORMATION -----------------------"
 echo "Total Users: $number_users 	Number Active: $number_active_users"
