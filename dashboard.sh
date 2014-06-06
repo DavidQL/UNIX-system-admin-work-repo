@@ -22,7 +22,7 @@ majority_process_owner=$(ps aux | tr -s ' ' | cut -d' ' -f1 | sort | uniq -c | s
 echo "CPU AND MEMORY RESOURCES ------------------"
 echo "CPU LOAD AVERAGE: $cpu_load_avg	Free RAM: $free_ram"
 echo "Total processes: $number_processes"
-echo "Majority process owner: $majority_process_owner with $majority_process_count processes"
+echo "Majority process owner: $majority_process_owner with $majority_processes_count processes"
 echo "NETWORK CONNECTIONS -----------------------"
 echo "Io Bytes Received: $io_bytes_rec	Bytes Transmitted: $io_bytes_sent"
 echo "eth0 Bytes Received: $eth0_bytes_rec	Bytes Transmitted: $eth0_bytes_sent"
